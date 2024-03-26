@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifetimeAttributes", "LifetimeAttributes\LifetimeAttributes.csproj", "{7B5EB306-04F0-486D-9D6C-933F6D98E7C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsole", "SampleConsole\SampleConsole.csproj", "{2F0681E9-21AB-484B-9713-A8F102E7294A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7B5EB306-04F0-486D-9D6C-933F6D98E7C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B5EB306-04F0-486D-9D6C-933F6D98E7C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B5EB306-04F0-486D-9D6C-933F6D98E7C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F0681E9-21AB-484B-9713-A8F102E7294A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F0681E9-21AB-484B-9713-A8F102E7294A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F0681E9-21AB-484B-9713-A8F102E7294A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F0681E9-21AB-484B-9713-A8F102E7294A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
