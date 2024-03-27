@@ -6,26 +6,25 @@ namespace LifetimeAttributes.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void AddClasses()
+        public static void AddClasses(this ServiceCollection serviceCollection)
         {
-            var serviceCollection = new ServiceCollection();
-            var assembly = typeof(ServiceCollectionExtensions).Assembly;
+            var assembly = Assembly.GetEntryAssembly() ?? throw new Exception("Assembly can't be null");
+
             var typesWithLifetime = assembly
                 .GetTypes()
-                .Where(type => type.GetCustomAttribute<BaseLifetimeAttribute>() is not null).Select(type => new
+                .Where(type => type.CustomAttributes
+                    .Any(attr => attr.AttributeType.IsSubclassOf(typeof(BaseLifetimeAttribute))))
+                .Select(type => new
                 {
                     Type = type,
-                    ServiceLifeTime = type.GetCustomAttributes().First(attr => attr.GetType().IsSubclassOf(typeof(BaseLifetimeAttribute)))
+                    LifeTimeAttribute = type.GetCustomAttribute<BaseLifetimeAttribute>()!
                 });
+
             foreach (var typeWithLifetime in typesWithLifetime)
             {
-                var descriptor = ServiceDescriptor.Describe(typeWithLifetime.Type, typeWithLifetime.Type, ServiceLifetime.Scoped);
-                var attributeProperties = typeWithLifetime.ServiceLifeTime.GetType().GetProperties();
-                foreach (var prop in attributeProperties)
-                {
-                    var valueOfProp = prop.Name == nameof(BaseLifetimeAttribute.Lifetime) 
-                        ? prop.GetValue(typeWithLifetime.ServiceLifeTime) : null;
-                }
+                var serviceLifetime = typeWithLifetime.LifeTimeAttribute.Lifetime;
+                var descriptor = ServiceDescriptor.Describe(typeWithLifetime.Type, typeWithLifetime.Type, serviceLifetime);
+                serviceCollection.TryAdd(descriptor);
             }
         }
     }
