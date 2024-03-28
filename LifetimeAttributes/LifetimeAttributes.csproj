@@ -14,9 +14,8 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
 
- <ItemGroup>
-  <!-- Include must be the fully qualified .NET type name of the Attribute to create. -->
+ <!-- <ItemGroup>
   <AssemblyAttribute Include="LifetimeAttributes.ScopedAttribute"></AssemblyAttribute>
-</ItemGroup>
+</ItemGroup> -->
 
 </Project>

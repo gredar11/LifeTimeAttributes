@@ -1,16 +1,16 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 namespace LifetimeAttributes;
 
-[AttributeUsage(AttributeTargets.All)]
+[AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class)]
 public abstract class BaseLifetimeAttribute : Attribute
 {
 
-    public BaseLifetimeAttribute(ServiceLifetime serviceLifetime)
+    protected BaseLifetimeAttribute(ServiceLifetime serviceLifetime)
     {
         Lifetime = serviceLifetime;
     }
 
-    public BaseLifetimeAttribute(ServiceLifetime serviceLifetime, Type? implementationType = null)
+    protected BaseLifetimeAttribute(ServiceLifetime serviceLifetime, Type? implementationType = null)
         : this(serviceLifetime)
     {
         ImplementationType = implementationType;

@@ -1,6 +1,6 @@
 ﻿namespace LifetimeAttributes;
 
-[Scoped]
+[Scoped(typeof(IDisposable))]
 public class Class1
 {
 

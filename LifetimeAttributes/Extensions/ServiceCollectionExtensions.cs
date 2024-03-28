@@ -10,6 +10,7 @@ namespace LifetimeAttributes.Extensions
         {
             var assembly = Assembly.GetEntryAssembly() ?? throw new Exception("Assembly can't be null");
 
+
             var typesWithLifetime = assembly
                 .GetTypes()
                 .Where(type => type.CustomAttributes
@@ -22,8 +23,16 @@ namespace LifetimeAttributes.Extensions
 
             foreach (var typeWithLifetime in typesWithLifetime)
             {
-                var serviceLifetime = typeWithLifetime.LifeTimeAttribute.Lifetime;
-                var descriptor = ServiceDescriptor.Describe(typeWithLifetime.Type, typeWithLifetime.Type, serviceLifetime);
+                var serviceType = typeWithLifetime.Type;
+                var lifetimeAttribute = typeWithLifetime.LifeTimeAttribute;
+                var serviceLifetime = lifetimeAttribute.Lifetime;
+                var implementationType = lifetimeAttribute.ImplementationType ?? serviceType;
+
+                var descriptor = ServiceDescriptor.Describe(
+                    typeWithLifetime.Type,
+                    implementationType,
+                    serviceLifetime);
+
                 serviceCollection.TryAdd(descriptor);
             }
         }
