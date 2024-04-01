@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace LifetimeAttributes;
+namespace LifetimeAttributes.Attributes;
 
-public class TransientAttribute : BaseLifetimeAttribute
+public sealed class TransientAttribute : BaseLifetimeAttribute
 {
     public TransientAttribute() : base(ServiceLifetime.Transient)
     {

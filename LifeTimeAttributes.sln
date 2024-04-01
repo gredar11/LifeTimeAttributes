@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifetimeAttributes", "Lifet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsole", "SampleConsole\SampleConsole.csproj", "{2F0681E9-21AB-484B-9713-A8F102E7294A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifetimeAttributes.Analyzer", "LifetimeAttributes.Analyzer\LifetimeAttributes.Analyzer\LifetimeAttributes.Analyzer.csproj", "{C15C31F7-570B-4F4A-99A8-08A8AF4A507C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2F0681E9-21AB-484B-9713-A8F102E7294A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F0681E9-21AB-484B-9713-A8F102E7294A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F0681E9-21AB-484B-9713-A8F102E7294A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C15C31F7-570B-4F4A-99A8-08A8AF4A507C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C15C31F7-570B-4F4A-99A8-08A8AF4A507C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C15C31F7-570B-4F4A-99A8-08A8AF4A507C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C15C31F7-570B-4F4A-99A8-08A8AF4A507C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

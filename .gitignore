@@ -65,6 +65,9 @@ artifacts/
 # Tye
 .tye/
 
+# Jetbrains
+.idea
+
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
 

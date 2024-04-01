@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace LifetimeAttributes;
+namespace LifetimeAttributes.Attributes;
 
-public class SingletonAttribute : BaseLifetimeAttribute
+public sealed class SingletonAttribute : BaseLifetimeAttribute
 {
     public SingletonAttribute() : base(ServiceLifetime.Singleton)
     {

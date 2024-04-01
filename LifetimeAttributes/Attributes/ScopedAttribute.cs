@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace LifetimeAttributes;
+namespace LifetimeAttributes.Attributes;
 
-public class ScopedAttribute : BaseLifetimeAttribute
+public sealed class ScopedAttribute : BaseLifetimeAttribute
 {
     public ScopedAttribute() : base(ServiceLifetime.Scoped)
     {

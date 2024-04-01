@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-namespace LifetimeAttributes;
 
-[AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class)]
+namespace LifetimeAttributes.Attributes;
+
+[AttributeUsage(AttributeTargets.Class)]
 public abstract class BaseLifetimeAttribute : Attribute
 {
 

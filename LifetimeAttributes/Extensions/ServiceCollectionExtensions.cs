@@ -1,4 +1,5 @@
 using System.Reflection;
+using LifetimeAttributes.Attributes;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -17,8 +18,7 @@ namespace LifetimeAttributes.Extensions
                     .Any(attr => attr.AttributeType.IsSubclassOf(typeof(BaseLifetimeAttribute))))
                 .Select(type => new
                 {
-                    Type = type,
-                    LifeTimeAttribute = type.GetCustomAttribute<BaseLifetimeAttribute>()!
+                    Type = type, LifeTimeAttribute = type.GetCustomAttribute<BaseLifetimeAttribute>()
                 });
 
             foreach (var typeWithLifetime in typesWithLifetime)
