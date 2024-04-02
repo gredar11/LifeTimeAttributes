@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LifetimeAttributes.Analyzer\LifetimeAttributes.Analyzer\LifetimeAttributes.Analyzer.csproj"
+    <ProjectReference Include="..\LifetimeAttributes.Analyzer\LifetimeAttributes.Analyzer.csproj"
                       OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
   </ItemGroup>
 </Project>

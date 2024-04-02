@@ -38,7 +38,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\LifetimeAttributes\LifetimeAttributes.csproj" />
+      <ProjectReference Include="..\LifetimeAttributes\LifetimeAttributes.csproj" />
     </ItemGroup>
 
 </Project>

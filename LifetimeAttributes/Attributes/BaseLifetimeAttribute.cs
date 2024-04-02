@@ -2,7 +2,7 @@
 
 namespace LifetimeAttributes.Attributes;
 
-[AttributeUsage(AttributeTargets.Class)]
+[AttributeUsage(AttributeTargets.Class, AllowMultiple =true)]
 public abstract class BaseLifetimeAttribute : Attribute
 {
 
