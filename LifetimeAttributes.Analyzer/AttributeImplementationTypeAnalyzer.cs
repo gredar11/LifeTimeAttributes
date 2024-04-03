@@ -54,23 +54,11 @@ public class AttributeImplementationTypeAnalyzer : DiagnosticAnalyzer
 
         var attributes = typeSymbol.GetAttributes();
 
-        var interfaces = typeSymbol.Interfaces;
+        var interfaces = typeSymbol.Interfaces.Select(@interface => @interface.Name).ToImmutableHashSet();
 
         foreach (var attributeData in attributes)
         {
-            if (attributeData.AttributeClass?.BaseType?.Name != nameof(BaseLifetimeAttribute))
-            {
-                continue;
-            }
-
-            var firstArgument = attributeData.ConstructorArguments.First();
-
-            if (firstArgument.Value is not INamedTypeSymbol namedTypeSymbol)
-            {
-                continue;
-            }
-
-            if (interfaces.Any(classInterface => classInterface.Name == namedTypeSymbol.Name))
+            if (!TryGetNonImplementedInterfaces(interfaces, attributeData, out var nonImplementedInterface))
             {
                 continue;
             }
@@ -82,8 +70,33 @@ public class AttributeImplementationTypeAnalyzer : DiagnosticAnalyzer
                 continue;
             }
 
-            var diagnostic = Diagnostic.Create(Rule, location, namedTypeSymbol.Name);
+            var diagnostic = Diagnostic.Create(Rule, location, nonImplementedInterface);
             syntaxNodeAnalysisContext.ReportDiagnostic(diagnostic);
         }
+    }
+
+    private bool TryGetNonImplementedInterfaces(ImmutableHashSet<string> interfacesNames, AttributeData attributeData, out string interfaceName)
+    {
+        interfaceName = string.Empty;
+
+        if (attributeData.AttributeClass?.BaseType?.Name != nameof(BaseLifetimeAttribute))
+        {
+            return false;
+        }
+
+        var firstArgument = attributeData.ConstructorArguments.First();
+
+        if (firstArgument.Value is not INamedTypeSymbol namedTypeSymbol)
+        {
+            return false;
+        }
+
+        if (interfacesNames.Contains(namedTypeSymbol.Name))
+        {
+            return false;
+        }
+
+        interfaceName = namedTypeSymbol.Name;
+        return true;
     }
 }
