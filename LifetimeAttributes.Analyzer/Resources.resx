@@ -22,12 +22,9 @@
         <value>If you define implementation type to LifetimeAttribute, class must implement it.</value><comment>An optional longer localizable description of the diagnostic.</comment>
     </data>
     <data name="LT0001MessageFormat" xml:space="preserve">
-        <value>Class hasn't implement declared '{0}' type</value><comment>The format-able message the diagnostic displays.</comment>
+        <value>Class doesn't implement declared '{0}' interface</value><comment>The format-able message the diagnostic displays.</comment>
     </data>
     <data name="LT0001Title" xml:space="preserve">
         <value>Class must implement declared interface</value><comment>The title of the diagnostic.</comment>
     </data>
-    <!-- <data name="AB0001CodeFixTitle" xml:space="preserve"> -->
-    <!--     <value>Replace '{0}' with '{1}'</value><comment>The title of the code fix.</comment> -->
-    <!-- </data> -->
 </root>

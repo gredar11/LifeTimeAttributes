@@ -7,10 +7,9 @@ namespace LifetimeAttributes.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void AddClasses(this ServiceCollection serviceCollection)
+        public static void AddServicesWithLifetimeAttribute(this ServiceCollection serviceCollection)
         {
             var assembly = Assembly.GetEntryAssembly() ?? throw new Exception("Assembly can't be null");
-
 
             var typesWithLifetime = assembly
                 .GetTypes()
@@ -18,15 +17,16 @@ namespace LifetimeAttributes.Extensions
                     .Any(attr => attr.AttributeType.IsSubclassOf(typeof(BaseLifetimeAttribute))))
                 .Select(type => new
                 {
-                    Type = type, LifeTimeAttribute = type.GetCustomAttribute<BaseLifetimeAttribute>()
+                    Type = type,
+                    LifeTimeAttribute = type.GetCustomAttribute<BaseLifetimeAttribute>()
                 });
 
             foreach (var typeWithLifetime in typesWithLifetime)
             {
-                var serviceType = typeWithLifetime.Type;
                 var lifetimeAttribute = typeWithLifetime.LifeTimeAttribute;
+
                 var serviceLifetime = lifetimeAttribute.Lifetime;
-                var implementationType = lifetimeAttribute.ImplementationType ?? serviceType;
+                var implementationType = lifetimeAttribute.ImplementationType ?? typeWithLifetime.Type;
 
                 var descriptor = ServiceDescriptor.Describe(
                     typeWithLifetime.Type,
